@@ -33,8 +33,6 @@ onMounted(async () => {
 .todo-page {
 	height: 100dvh;
 	width: 100%;
-	background: rgb(242,255,254);
-	background: linear-gradient(90deg, rgba(242,255,254,1) 0%, rgba(237,255,247,1) 70%, rgba(239,255,246,1) 100%); 
 }
 
 .title-container {
