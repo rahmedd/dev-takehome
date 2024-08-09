@@ -12,6 +12,7 @@
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore"
   },
   "dependencies": {
+    "@fontsource/inter": "^5.0.20",
     "axios": "^1.7.3",
     "bulma": "^0.9.4",
     "pinia": "^2.2.1",

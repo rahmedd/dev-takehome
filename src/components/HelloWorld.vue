@@ -1,26 +1,51 @@
 <template>
 	<div class="block todo-page">
 		<div class="title-container">
-			<h1 class="title">
+			<h1 class="title is-1">
 				Todos
 			</h1>
 		</div>
-		<ul class="todo-container">
-			<li
-				v-for="todo in store.doneTodos"
-				:key="todo.id"
-			>
-				<div class="box todo-item">
-					{{ todo.todo }}
-				</div>
-			</li>
-		</ul>
+
+		<div class="box">
+			<h3 class="title is-5 title-offset">
+				Incomplete
+			</h3>
+			<ul class="todo-container">
+				<li
+					v-for="todo in store.incompleteTodos"
+					:key="todo.id"
+				>
+					<TodoItem
+						:todo="todo"
+						@toggle="store.toggleTodo(todo.id)"
+					/>
+				</li>
+			</ul>
+		</div>
+
+		<div class="box">
+			<h3 class="title is-5 title-offset">
+				Completed
+			</h3>
+			<ul class="todo-container">
+				<li
+					v-for="todo in store.doneTodos"
+					:key="todo.id"
+				>
+					<TodoItem
+						:todo="todo"
+						@toggle="store.toggleTodo(todo.id)"
+					/>
+				</li>
+			</ul>
+		</div>
 	</div>
 </template>
 
 <script setup lang="ts">
 import { onMounted } from 'vue'
 import { useTodoStore } from '@/stores/store'
+import TodoItem from './TodoItem.vue'
 
 const store = useTodoStore()
 
@@ -29,10 +54,12 @@ onMounted(async () => {
 })
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 .todo-page {
 	height: 100dvh;
 	width: 100%;
+	padding-left: 20px;
+	padding-right: 20px;
 }
 
 .title-container {
@@ -40,15 +67,21 @@ onMounted(async () => {
 	justify-content: center;
 	align-items: center;
 	padding: 20px;
+
+	h1 {
+		background: -webkit-linear-gradient(315deg,#42d392 25%,#647eff);
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+	}
 }
 
 .todo-container {
-	margin-left: 20px;
-	margin-right: 20px;
+	margin-bottom: 20px;
 }
 
-.todo-item {
-	margin-bottom: 10px;
+.title-offset {
+	margin-top: 10px;
+	margin-left: 20px;
 }
 
 </style>

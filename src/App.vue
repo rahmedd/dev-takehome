@@ -8,9 +8,12 @@ import HelloWorld from './components/HelloWorld.vue'
 	</main>
 </template>
 
-<style>
+<style lang="scss">
+@import "@fontsource/inter";
+
 main {
-	font-family: Avenir, Helvetica, Arial, sans-serif;
+	background: whitesmoke;
+	font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 }

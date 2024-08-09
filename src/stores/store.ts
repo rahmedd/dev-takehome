@@ -6,6 +6,7 @@ import type { Todo } from '@/types/Todo'
 export const useTodoStore = defineStore('todo', () => {
 	const todos = ref<Todo[]>([])
 
+	const incompleteTodos = computed(() => todos.value.filter((todo) => !todo.completed))
 	const doneTodos = computed(() => todos.value.filter((todo) => todo.completed))
 
 	async function fetchTodos() {
@@ -23,9 +24,16 @@ export const useTodoStore = defineStore('todo', () => {
 		}
 	}
 
+	function toggleTodo(id: number) {
+		const todo = todos.value.find(o => o.id === id)!
+		todo.completed = !todo.completed
+	}
+
 	return { 
 		todos,
+		incompleteTodos,
 		doneTodos,
 		fetchTodos,
+		toggleTodo,
 	}
 })
